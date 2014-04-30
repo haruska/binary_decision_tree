@@ -27,6 +27,9 @@ properties around calulating parent and child node IDs based on the current node
 
 [![Build Status](https://travis-ci.org/haruska/binary_decision_tree.svg?branch=master)](https://travis-ci.org/haruska/binary_decision_tree)
 [![Coverage Status](https://coveralls.io/repos/haruska/binary_decision_tree/badge.png)](https://coveralls.io/r/haruska/binary_decision_tree)
+[![Gem Version](https://badge.fury.io/rb/binary_decision_tree.svg)](http://badge.fury.io/rb/binary_decision_tree)
+[![Dependency Status](https://gemnasium.com/haruska/binary_decision_tree.svg)](https://gemnasium.com/haruska/binary_decision_tree)
+[![Code Climate](https://codeclimate.com/github/haruska/binary_decision_tree.png)](https://codeclimate.com/github/haruska/binary_decision_tree)
 
 ## Contributing
 

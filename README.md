@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/haruska/binary_decision_tree.svg?branch=master)](https://travis-ci.org/haruska/binary_decision_tree)
-
 # BinaryDecisionTree
 
 A binary tree designed to record decisions based on child nodes. This data structure is useful
@@ -24,6 +22,11 @@ Or install it yourself as:
 
 This tree assumes a fix depth and fully populated (dense, not sparse.) It provides some nice
 properties around calulating parent and child node IDs based on the current node ID.
+
+## Build Status
+
+[![Build Status](https://travis-ci.org/haruska/binary_decision_tree.svg?branch=master)](https://travis-ci.org/haruska/binary_decision_tree)
+[![Coverage Status](https://coveralls.io/repos/haruska/binary_decision_tree/badge.png)](https://coveralls.io/r/haruska/binary_decision_tree)
 
 ## Contributing
 

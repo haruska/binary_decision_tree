@@ -116,5 +116,18 @@ module BinaryDecisionTree
       end
     end
 
+    describe "parent position calculation" do
+      it "should be half of the current slot value" do
+        tree = Tree.new(6)
+        i = 1
+        while !tree.at(i).nil? && !tree.at(i).left.nil?
+          node = tree.at(i)
+          assert_same node, node.left.parent
+          assert_same node, node.right.parent
+          i += 1
+        end
+      end
+    end
+
   end
 end

@@ -88,24 +88,27 @@ module BinaryDecisionTree
     end
 
     describe "current depth calculation" do
-      it "should return the correct depth" do
-        tree = Tree.new(6) #63 nodes
-        depth_hash = {}
+      before do
+        @depth_hash = {}
 
-        6.times do |i|
+        #bfs
+        tree = Tree.new(6) #63 nodes
+        tree.depth.times do |i|
           current_depth = i + 1
-          depth_hash[current_depth] = []
+          @depth_hash[current_depth] = []
           if current_depth == 1
-            depth_hash[current_depth] << tree.root
+            @depth_hash[current_depth] << tree.root
           else
-            depth_hash[current_depth - 1].each do |parent_node|
-              depth_hash[current_depth] << parent_node.left
-              depth_hash[current_depth] << parent_node.right
+            @depth_hash[current_depth - 1].each do |parent_node|
+              @depth_hash[current_depth] << parent_node.left
+              @depth_hash[current_depth] << parent_node.right
             end
           end
         end
+      end
 
-        depth_hash.each do |depth, nodes|
+      it "should return the correct depth" do
+        @depth_hash.each do |depth, nodes|
           nodes.each do |node|
             assert_equal depth, node.current_depth
           end

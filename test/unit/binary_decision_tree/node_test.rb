@@ -117,17 +117,53 @@ module BinaryDecisionTree
     end
 
     describe "parent position calculation" do
+      before do
+        @tree = Tree.new(6)
+      end
+
       it "should be half of the current slot value" do
-        tree = Tree.new(6)
         i = 1
-        while !tree.at(i).nil? && !tree.at(i).left.nil?
-          node = tree.at(i)
+        while !@tree.at(i).nil? && !@tree.at(i).left.nil?
+          node = @tree.at(i)
           assert_same node, node.left.parent
           assert_same node, node.right.parent
           i += 1
         end
       end
+
+      it "should have a get node helper" do
+        node = @tree.at(3)
+        assert_equal 1, node.parent_position
+        assert_same @tree.at(1), node.parent
+      end
     end
 
-  end
+    describe "child position calculations" do
+      before do
+        @tree = Tree.new(3)
+        @node = @tree.at(2)
+      end
+
+      describe "left position calculation" do
+        it "should be twice the current slot value" do
+          assert_equal 4, @node.left_position
+        end
+
+        it "should have a get node helper" do
+          assert_same @tree.at(4), @node.left
+        end
+      end
+
+      describe "right position calculation" do
+        it "should be next to the left child (one greater)" do
+          assert_equal 5, @node.right_position
+        end
+
+        it "should have a get node helper" do
+          assert_same @tree.at(5), @node.right
+        end
+      end
+
+      end
+    end
 end

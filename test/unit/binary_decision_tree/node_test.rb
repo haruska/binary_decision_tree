@@ -63,5 +63,55 @@ module BinaryDecisionTree
       end
     end
 
+    describe "a leaf node" do
+      before do
+        @node = Tree.new(2).at(2)
+      end
+
+      it "should know it is a leaf node" do
+        assert @node.leaf?
+      end
+
+      it "should not have a left or right child in the tree" do
+        assert_nil @node.left
+        assert_nil @node.right
+      end
+
+      it "should still have left and right positions" do
+        assert !@node.left_position.nil?
+        assert !@node.right_position.nil?
+      end
+
+      it "should have a parent" do
+        assert !@node.parent.nil?
+      end
+    end
+
+    describe "current depth calculation" do
+      it "should return the correct depth" do
+        tree = Tree.new(6) #63 nodes
+        depth_hash = {}
+
+        6.times do |i|
+          current_depth = i + 1
+          depth_hash[current_depth] = []
+          if current_depth == 1
+            depth_hash[current_depth] << tree.root
+          else
+            depth_hash[current_depth - 1].each do |parent_node|
+              depth_hash[current_depth] << parent_node.left
+              depth_hash[current_depth] << parent_node.right
+            end
+          end
+        end
+
+        depth_hash.each do |depth, nodes|
+          nodes.each do |node|
+            assert_equal depth, node.current_depth
+          end
+        end
+      end
+    end
+
   end
 end

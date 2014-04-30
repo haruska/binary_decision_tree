@@ -30,7 +30,7 @@ module BinaryDecisionTree
     end
 
     def current_depth
-      Math.log2(slot).ceil
+      Math.log2(slot).floor + 1
     end
 
     def parent_position

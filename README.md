@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/haruska/binary_decision_tree.svg?branch=master)](https://travis-ci.org/haruska/binary_decision_tree)
+
 # BinaryDecisionTree
 
 A binary tree designed to record decisions based on child nodes. This data structure is useful

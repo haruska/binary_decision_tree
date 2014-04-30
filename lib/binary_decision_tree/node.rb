@@ -8,10 +8,10 @@ module BinaryDecisionTree
     attr_reader :slot #bit position
     attr_reader :tree
 
-    def initialize(tree, slot, decision: nil)
+    def initialize(tree, slot)
       @tree = tree
       @slot = slot
-      @decision = decision
+      @decision = nil
     end
 
     def value

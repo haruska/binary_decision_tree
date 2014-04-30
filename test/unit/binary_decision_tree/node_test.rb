@@ -14,12 +14,6 @@ module BinaryDecisionTree
         assert_equal 1, node.slot
         assert_nil node.decision
       end
-
-      it "should optionally take in a decision" do
-        node = Node.new(@tree, 1, decision: Node::LEFT)
-
-        assert_equal Node::LEFT, node.decision
-      end
     end
 
     describe "calculating a value" do
@@ -47,7 +41,7 @@ module BinaryDecisionTree
           @nodes.each {|n| n.decision = Node::RIGHT unless n.nil?}
         end
 
-        it "should return the slot id of next left position on a leaf" do
+        it "should return the slot id of next right position on a leaf" do
           node = @nodes.last
           assert node.leaf?
 

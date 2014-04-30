@@ -1,43 +1,60 @@
-class BinaryDecisionTree::Node
-  attr_accessor :decision #nil, 0, or 1
+module BinaryDecisionTree
+  class Node
+    LEFT = 0
+    RIGHT = 1
 
-  attr_reader :slot #bit position
-  attr_reader :tree
+    attr_accessor :decision #nil, 0, or 1
 
-  def initialize(tree, slot, decision: nil)
-    @tree = tree
-    @slot = slot
-    @decision = decision
-  end
+    attr_reader :slot #bit position
+    attr_reader :tree
 
-  def value
-    case decision
-      when 0
-        left.nil? ? left_position : left.value
-      when 1
-        right.nil? ? right_position : right.value
-      else
-        nil
+    def initialize(tree, slot, decision: nil)
+      @tree = tree
+      @slot = slot
+      @decision = decision
     end
-  end
 
-  def leaf?
-    left.nil? && right.nil?
-  end
+    def value
+      case decision
+        when LEFT
+          left.nil? ? left_position : left.value
+        when RIGHT
+          right.nil? ? right_position : right.value
+        else
+          nil
+      end
+    end
 
-  def left_position
-    slot * 2
-  end
+    def leaf?
+      left.nil? && right.nil?
+    end
 
-  def right_position
-    left_position + 1
-  end
+    def current_depth
+      Math.log2(slot).ceil
+    end
 
-  def left
-    tree.at(left_position)
-  end
+    def parent_position
+      (slot % 2 == 0 ? slot + 1 : slot) / 2
+    end
 
-  def right
-    tree.at(right_position)
+    def left_position
+      slot * 2
+    end
+
+    def right_position
+      left_position + 1
+    end
+
+    def parent
+      tree.at(parent_position)
+    end
+
+    def left
+      tree.at(left_position)
+    end
+
+    def right
+      tree.at(right_position)
+    end
   end
 end

@@ -2,9 +2,9 @@ module BinaryDecisionTree
   class Tree
     attr_reader :depth
 
-    def initialize(depth)
+    def initialize(depth, node_class: Node)
       @depth = depth
-      @nodes = Array.new(size) {|i| i == 0 ? nil : Node.new(self, i)}
+      @nodes = Array.new(size) {|i| i == 0 ? nil : node_class.new(self, i)}
     end
 
     def root

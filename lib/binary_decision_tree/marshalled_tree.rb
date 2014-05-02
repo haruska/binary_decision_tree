@@ -27,8 +27,8 @@ module BinaryDecisionTree
       new(depth, decisions, mask)
     end
 
-    def to_tree
-      tree = Tree.new(depth)
+    def to_tree(tree_class: Tree)
+      tree = tree_class.new(depth)
 
       (2**tree.depth).times do |i|
         next if i == 0

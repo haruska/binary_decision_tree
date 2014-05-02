@@ -1,6 +1,4 @@
 language: ruby
 rvm:
   - 2.1.1
-  #- 2.1.0 not working on travis ci
   - 2.0.0
-  - jruby-19mode

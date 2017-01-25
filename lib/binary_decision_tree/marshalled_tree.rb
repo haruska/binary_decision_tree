@@ -43,5 +43,21 @@ module BinaryDecisionTree
 
       tree
     end
+
+    def ==(obj)
+      obj.class == self.class && obj.state == state
+    end
+
+    alias_method :eql?, :==
+
+    def hash
+      state.hash
+    end
+
+    protected
+
+    def state
+      [depth, decisions, mask]
+    end
   end
 end
